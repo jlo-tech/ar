@@ -1,6 +1,6 @@
 """Setuptools for building the extension package"""
 from setuptools import setup, Extension
-import numpy.distutils.misc_util
+import numpy as np
 
 PACKAGE_NAME = 'ar'
 
@@ -11,7 +11,7 @@ setup(
     classifiers=['Development Status :: 3 - Alpha'],
     install_requires=['numpy'],
     license='MPL2',
-    setup_requires=['setuptools_scm'],
+    #setup_requires=['setuptools_scm'],
     url='http://github.com/RhysU/ar',
     use_scm_version=True,
     ext_modules=[
@@ -19,7 +19,7 @@ setup(
             PACKAGE_NAME,
             depends=['ar.hpp'],
             sources=['ar-python.cpp'],
-            include_dirs=numpy.distutils.misc_util.get_numpy_include_dirs(),
+            include_dirs=[np.get_include()],
         )
     ],
 )
